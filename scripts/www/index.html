@@ -1,11 +1,183 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus</title>
-    </head>
-    <body>
-        PakePlus
-    </body>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>无锡科振 执行器价格计算工具</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:微软雅黑,sans-serif;}
+    body {padding:20px;background:#f8f9fa;}
+    .box {max-width:480px;margin:0 auto;background:white;padding:25px;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.06);}
+    h1 {font-size:20px;text-align:center;color:#333;margin-bottom:10px;}
+    h2 {font-size:16px;text-align:center;color:#666;margin-bottom:25px;}
+    .tab {display:flex;justify-content:center;gap:10px;margin-bottom:20px;}
+    .tab-btn {padding:6px 18px;border:none;border-radius:20px;background:#eee;cursor:pointer;}
+    .tab-btn.on {background:#2f80ed;color:white;}
+    .form-item {display:flex;align-items:center;margin-bottom:18px;}
+    .form-item label {width:80px;font-size:14px;color:#333;}
+    .form-item select {flex:1;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:14px;}
+    .price-show {margin:30px 0;padding:15px;background:#e6f7ff;border-radius:8px;text-align:center;}
+    .price-show p {font-size:15px;color:#666;margin-bottom:8px;}
+    .price-show .money {font-size:28px;color:#2f80ed;font-weight:bold;}
+    .tip {text-align:center;font-size:11px;color:#f44336;margin-top:20px;padding-top:15px;border-top:1px dashed #eee;}
+    .hide {display:none;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>无锡科振自控阀门有限公司</h1>
+    <h2>执行器价格计算小工具</h2>
+
+    <div class="tab">
+      <button class="tab-btn on" onclick="switchTab('qidong')">气动执行器</button>
+      <button class="tab-btn" onclick="switchTab('yeya')">液压执行器</button>
+    </div>
+
+    <!-- 气动区 -->
+    <div id="qidong">
+      <div class="form-item">
+        <label>材质：</label>
+        <select id="q-cai" onchange="calcQi()">
+          <option value="ss304">SS304</option>
+          <option value="ss316">SS316</option>
+          <option value="ss316l">316L</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label>型号：</label>
+        <select id="q-xing" onchange="calcQi()">
+          <option value="KZ-45">KZ-45</option><option value="KZ-52">KZ-52</option><option value="KZ-63">KZ-63</option>
+          <option value="KZ-75">KZ-75</option><option value="KZ-83">KZ-83</option><option value="KZ-92">KZ-92</option>
+          <option value="KZ-105">KZ-105</option><option value="KZ-125">KZ-125</option><option value="KZ-140">KZ-140</option>
+          <option value="KZ-160">KZ-160</option><option value="KZ-190">KZ-190</option><option value="KZ-210">KZ-210</option>
+          <option value="KZ-240">KZ-240</option><option value="KZ-270">KZ-270</option><option value="KZ-300">KZ-300</option>
+          <option value="KZ-350">KZ-350</option><option value="KZ-400">KZ-400</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label>类型：</label>
+        <select id="q-lei" onchange="toggleSpring();calcQi()">
+          <option value="double" selected>双作用</option>
+          <option value="single">单作用(含弹簧)</option>
+        </select>
+      </div>
+      <div class="form-item hide" id="springItem">
+        <label>弹簧数：</label>
+        <select id="q-tan" onchange="calcQi()">
+          <option value="6">6</option><option value="7">7</option><option value="8">8</option>
+          <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label>折扣：</label>
+        <select id="q-zhe" onchange="calcQi()">
+          <option value="1.00">原价</option><option value="0.99">九九折</option><option value="0.98">九八折</option>
+          <option value="0.97">九七折</option><option value="0.96">九六折</option><option value="0.95">九五折</option>
+          <option value="0.90">九折</option><option value="0.85">八五折</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 液压区 -->
+    <div id="yeya" class="hide">
+      <div class="form-item">
+        <label>材质：</label>
+        <select id="y-cai" onchange="calcYe()">
+          <option value="ss304">SS304</option>
+          <option value="ss316">SS316</option>
+          <option value="ss316l">316L</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label>型号：</label>
+        <select id="y-xing" onchange="calcYe()">
+          <option value="HD120">HD120</option><option value="HD350">HD350</option><option value="HD700">HD700</option>
+          <option value="HD1400">HD1400</option><option value="HD3000">HD3000</option><option value="HD5000">HD5000</option><option value="HD10K">HD10K</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label>折扣：</label>
+        <select id="y-zhe" onchange="calcYe()">
+          <option value="1.00">原价</option><option value="0.99">九九折</option><option value="0.98">九八折</option>
+          <option value="0.97">九七折</option><option value="0.96">九六折</option><option value="0.95">九五折</option>
+          <option value="0.90">九折</option><option value="0.85">八五折</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 价格显示 -->
+    <div class="price-show">
+      <p>基础价：<span id="basePrice">¥589</span></p >
+      <p>最终总价（含13%税）：</p >
+      <div class="money" id="finalPrice">¥589</div>
+    </div>
+    <div class="tip">仅供无锡科振自控阀门有限公司内部使用</div>
+  </div>
+
+  <script>
+    // 气动价格数据
+    const qData = {
+      ss304:{"KZ-45":589,"KZ-52":669,"KZ-63":815,"KZ-75":1023,"KZ-83":1076,"KZ-92":1480,"KZ-105":1659,"KZ-125":2475,"KZ-140":3834,"KZ-160":4802,"KZ-190":10780,"KZ-210":12502,"KZ-240":25850,"KZ-270":36938,"KZ-300":42350,"KZ-350":67500,"KZ-400":85800},
+      ss316:{"KZ-45":622,"KZ-52":699,"KZ-63":876,"KZ-75":1084,"KZ-83":1150,"KZ-92":1518,"KZ-105":1791,"KZ-125":2662,"KZ-140":3991,"KZ-160":5187,"KZ-190":11880,"KZ-210":13057,"KZ-240":28050,"KZ-270":40150,"KZ-300":45980,"KZ-350":71600,"KZ-400":92950},
+      tan:{"KZ-45":2.5,"KZ-52":3,"KZ-63":4,"KZ-75":5.5,"KZ-83":6,"KZ-92":8,"KZ-105":11,"KZ-125":15,"KZ-140":23,"KZ-160":38,"KZ-190":55,"KZ-210":65,"KZ-240":80,"KZ-270":85,"KZ-300":140,"KZ-350":150,"KZ-400":180}
+    };
+    // 液压价格数据
+    const yData = {
+      ss304:{"HD120":2970,"HD350":3260,"HD700":4080,"HD1400":5480,"HD3000":6990,"HD5000":7770,"HD10K":14660},
+      ss316:{"HD120":3080,"HD350":3430,"HD700":4330,"HD1400":5940,"HD3000":7640,"HD5000":9020,"HD10K":16040}
+    };
+
+    // 切换弹簧显示（双作用隐藏/单作用显示）
+    function toggleSpring(){
+      const type = document.getElementById('q-lei').value;
+      document.getElementById('springItem').classList.toggle('hide', type === 'double');
+    }
+
+    // 切换标签
+    function switchTab(tab){
+      document.getElementById('qidong').classList.add('hide');
+      document.getElementById('yeya').classList.add('hide');
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('on'));
+      document.getElementById(tab).classList.remove('hide');
+      event.currentTarget.classList.add('on');
+      tab=='qidong'?calcQi():calcYe();
+    }
+
+    // 算气动价格
+    function calcQi(){
+      const cai = document.getElementById('q-cai').value;
+      const xing = document.getElementById('q-xing').value;
+      const lei = document.getElementById('q-lei').value;
+      const tan = parseInt(document.getElementById('q-tan').value);
+      const zhe = parseFloat(document.getElementById('q-zhe').value);
+      
+      let base = cai === 'ss316l' ? Math.round(qData.ss316[xing] * 1.05) : qData[cai][xing];
+      if(lei === 'single') base += Math.round(qData.tan[xing] * tan);
+      const final = Math.round(base * zhe);
+      
+      document.getElementById('basePrice').innerText = '¥' + base;
+      document.getElementById('finalPrice').innerText = '¥' + final;
+    }
+
+    // 算液压价格
+    function calcYe(){
+      const cai = document.getElementById('y-cai').value;
+      const xing = document.getElementById('y-xing').value;
+      const zhe = parseFloat(document.getElementById('y-zhe').value);
+      
+      let base = cai === 'ss316l' ? Math.round(yData.ss316[xing] * 1.05) : yData[cai][xing];
+      const final = Math.round(base * zhe);
+      
+      document.getElementById('basePrice').innerText = '¥' + base;
+      document.getElementById('finalPrice').innerText = '¥' + final;
+    }
+
+    // 初始化
+    window.onload = function(){
+      toggleSpring();
+      calcQi();
+    }
+  </script>
+</body>
 </html>
