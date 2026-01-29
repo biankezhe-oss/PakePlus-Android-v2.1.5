@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>无锡科振自控阀门有限公司 执行器价格计算小工具</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei", sans-serif;}
+    body {
+      min-height:100vh;
+      margin:0;
+      padding:0;
+      background: linear-gradient(-45deg, #f0f4f8, #e8f0fe, #f5fafe, #eef5ff) !important;
+      background-size: 400% 400% !important;
+      animation: gradientBg 15s ease infinite !important;
+      overflow-x: hidden;
+    }
+    @keyframes gradientBg {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    .container {
+      width:100%;
+      max-width:500px;
+      min-height:100vh;
+      background:white;
+      padding:20px 25px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 0 20px rgba(0,0,0,0.05);
+      border-radius:0 0 12px 12px;
+    }
+    .header {text-align:center;margin:20px 0 30px;}
+    .company-name {font-size:22px;font-weight:bold;color:#2d3748;line-height:1.3;margin-bottom:8px;}
+    .tool-name {font-size:18px;color:#2f80ed;font-weight:500;}
+    .category-switch {display:flex;justify-content:center;margin:15px 0 25px;gap:10px;padding-bottom:15px;border-bottom:1px solid #f1f5f9;}
+    .category-btn {
+      padding:8px 16px;
+      border:1px solid #e2e8f0;
+      border-radius:20px;
+      background:#f8fafc;
+      color:#4a5568;
+      font-size:14px;
+      cursor:pointer;
+      transition:all 0.3s ease;
+    }
+    .category-btn.active {
+      background:linear-gradient(90deg, #2f80ed, #56ccf2);
+      color:white;
+      border-color:transparent;
+      box-shadow:0 3px 8px rgba(47,128,237,0.2);
+    }
+    .category-btn:hover:not(.active) {border-color:#2f80ed;color:#2f80ed;}
+    .form-wrapper {flex:1;}
+    .form-item {
+      display:flex;
+      align-items:center;
+      margin-bottom:20px;
+      padding:16px;
+      background:linear-gradient(135deg, #f8fafc, #f1f5f9);
+      border-radius:12px;
+      transition:all 0.3s ease;
+    }
+    .form-item:hover {transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.06);}
+    .label {width:90px;font-size:15px;color:#4a5568;font-weight:500;flex-shrink:0;}
+    select {
+      flex:1;
+      padding:12px 14px;
+      border:1px solid #e2e8f0;
+      border-radius:8px;
+      font-size:15px;color:#2d3748;
+      background:white;
+      transition:all 0.3s ease;
+    }
+    select:focus {
+      outline:none;
+      border-color:#2f80ed;
+      box-shadow:0 0 0 3px rgba(47,128,237,0.1);
+    }
+    .result {
+      margin-top:25px;
+      padding:22px;
+      background:linear-gradient(135deg, #e6f7ff, #f0f9ff);
+      border-radius:16px;
+      text-align:center;
+      border:1px solid #bae7ff;
+      box-shadow:0 3px 10px rgba(186,231,255,0.5);
+    }
+    .result-label {font-size:17px;color:#4a5568;font-weight:500;}
+    .price {
+      font-size:30px;
+      font-weight:bold;
+      background:linear-gradient(90deg, #2f80ed, #56ccf2);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin:0 8px;
+    }
+    .original-price {font-size:12px;color:#718096;margin-top:8px;display:block;}
+    .note {font-size:12px;color:#718096;display:block;margin-top:5px;}
+    .inner-tip {text-align:center;font-size:11px;color:#ff4d4f;font-weight:500;margin-top:30px;padding-top:15px;border-top:1px dashed #eee;}
+    .hidden {display:none!important;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="company-name">无锡科振自控阀门有限公司</div>
+      <div class="tool-name">执行器价格计算小工具</div>
+    </div>
+    <div class="category-switch">
+      <button class="category-btn active" data-category="pneumatic">气动执行器</button>
+      <button class="category-btn" data-category="hydraulic">液压执行器</button>
+    </div>
+    <div class="form-wrapper">
+      <div class="form-item">
+        <label class="label">材质：</label>
+        <select id="materialSelect">
+          <option value="ss304">SS304</option>
+          <option value="ss316">SS316</option>
+          <option value="ss316l">316L</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label class="label">型号：</label>
+        <select id="modelSelect"></select>
+      </div>
+      <div class="form-item" id="typeGroup">
+        <label class="label">类型：</label>
+        <select id="typeSelect">
+          <option value="double">双作用</option>
+          <option value="single">单作用（含弹簧）</option>
+        </select>
+      </div>
+      <div class="form-item hidden" id="springCountGroup">
+        <label class="label">弹簧数量：</label>
+        <select id="springCountSelect">
+          <option value="6">6</option><option value="7">7</option><option value="8">8</option>
+          <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label class="label">折扣：</label>
+        <select id="discountSelect">
+          <option value="1.00" selected>原价（不打折）</option>
+          <option value="0.99">九九折</option><option value="0.98">九八折</option><option value="0.97">九七折</option>
+          <option value="0.96">九六折</option><option value="0.95">九五折</option><option value="0.94">九四折</option>
+          <option value="0.93">九三折</option><option value="0.92">九二折</option><option value="0.91">九一折</option>
+          <option value="0.90">九折</option><option value="0.89">八九折</option><option value="0.88">八八折</option>
+          <option value="0.87">八七折</option><option value="0.86">八六折</option><option value="0.85">八五折</option>
+        </select>
+      </div>
+    </div>
+    <div class="result">
+      <span class="result-label">最终总价：</span>
+      <span class="price" id="totalPrice">¥589 元</span>
+      <span class="original-price" id="originalPrice">基础价：¥589 元</span>
+      <span class="note">含13%增值税；316L=SS316×1.05取整；单作用弹簧按型号定价</span>
+    </div>
+    <div class="inner-tip">仅供无锡科振自控阀门有限公司内部人员使用</div>
+  </div>
+
+  <script>
+    // 全量精准数据
+    const productData = {
+      pneumatic: {
+        bodyPrice: {
+          ss304: {"KZ-45":589,"KZ-52":669,"KZ-63":815,"KZ-75":1023,"KZ-83":1076,"KZ-92":1480,"KZ-105":1659,"KZ-125":2475,"KZ-140":3834,"KZ-160":4802,"KZ-190":10780,"KZ-210":12502,"KZ-240":25850,"KZ-270":36938,"KZ-300":42350,"KZ-350":67500,"KZ-400":85800},
+          ss316: {"KZ-45":622,"KZ-52":699,"KZ-63":876,"KZ-75":1084,"KZ-83":1150,"KZ-92":1518,"KZ-105":1791,"KZ-125":2662,"KZ-140":3991,"KZ-160":5187,"KZ-190":11880,"KZ-210":13057,"KZ-240":28050,"KZ-270":40150,"KZ-300":45980,"KZ-350":71600,"KZ-400":92950}
+        },
+        springUnitPrice: {
+          "KZ-45":2.5,"KZ-52":3,"KZ-63":4,"KZ-75":5.5,"KZ-83":6,"KZ-92":8,"KZ-105":11,
+          "KZ-125":15,"KZ-140":23,"KZ-160":38,"KZ-190":55,"KZ-210":65,"KZ-240":80,
+          
