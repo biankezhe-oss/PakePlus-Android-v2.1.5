@@ -10,14 +10,12 @@
     body {
       min-height:100vh;
       margin:0;
-      padding:20px 10px;
-      /* 调整背景为更明亮的科技蓝渐变 */
-      background: radial-gradient(circle at 10% 20%, #1e293b 0%, #0f172a 100%);
+      padding:10px 8px; /* 大幅减小页面上下左右内边距 */
+      background: radial-gradient(circle at 10% 20%, #f8fbff 0%, #eef5ff 100%);
       background-attachment: fixed;
       overflow-x: hidden;
       position: relative;
     }
-    /* 科技感粒子背景 - 提高亮度 */
     body::before {
       content: '';
       position: fixed;
@@ -26,13 +24,12 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 25% 15%, rgba(59, 130, 246, 0.15) 0%, transparent 25%),
-        radial-gradient(circle at 75% 85%, rgba(14, 165, 233, 0.15) 0%, transparent 25%),
-        linear-gradient(to bottom, transparent, rgba(30, 41, 59, 0.8));
+        radial-gradient(circle at 25% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 25%),
+        radial-gradient(circle at 75% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 25%),
+        linear-gradient(to bottom, transparent, rgba(238, 245, 255, 0.8));
       pointer-events: none;
       z-index: -1;
     }
-    /* 网格背景 - 提高对比度 */
     body::after {
       content: '';
       position: fixed;
@@ -41,35 +38,33 @@
       width: 100%;
       height: 100%;
       background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px);
+        linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
       background-size: 40px 40px;
       pointer-events: none;
       z-index: -1;
     }
-    /* 科技风容器 - 更明亮的玻璃拟态 */
+    /* 容器：大幅减小内边距和最小高度 */
     .container {
       width:100%;
       max-width:520px;
-      min-height:calc(100vh - 40px);
-      /* 提高背景透明度，更明亮 */
-      background: rgba(30, 41, 59, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding:30px 24px;
+      min-height:calc(100vh - 20px); /* 减小最小高度 */
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding:16px 18px; /* 大幅减小容器内边距 */
       margin:0 auto;
       display:flex;
       flex-direction:column;
-      border-radius:24px;
+      border-radius:20px; /* 轻微减小圆角 */
       box-shadow: 
-        0 0 30px rgba(59, 130, 246, 0.15),
-        0 1px 2px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(59, 130, 246, 0.4);
+        0 0 30px rgba(59, 130, 246, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(59, 130, 246, 0.2);
       position: relative;
       overflow: hidden;
     }
-    /* 容器发光边框效果 - 更亮的渐变 */
     .container::before {
       content: '';
       position: absolute;
@@ -77,7 +72,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border-radius: 24px;
+      border-radius: 20px;
       padding: 1px;
       background: linear-gradient(135deg, #60a5fa, #22d3ee, #60a5fa);
       -webkit-mask: 
@@ -85,15 +80,15 @@
         linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
-      opacity: 0.9;
+      opacity: 0.8;
       z-index: -1;
     }
-    /* 头部科技感排版 */
+    /* 头部：减小间距和内边距 */
     .header {
       text-align:center;
-      margin:0 0 32px;
-      padding-bottom:24px;
-      border-bottom:1px solid rgba(59, 130, 246, 0.3);
+      margin:0 0 16px; /* 大幅减小底部外边距 */
+      padding-bottom:12px; /* 减小底部内边距 */
+      border-bottom:1px solid rgba(59, 130, 246, 0.2);
       position:relative;
     }
     .header::after {
@@ -105,51 +100,46 @@
       width:80px;
       height:2px;
       background: linear-gradient(90deg, #60a5fa, #22d3ee);
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.9);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
     }
     .company-name {
-      font-size:24px;
+      font-size:20px; /* 减小字体 */
       font-weight:600;
-      /* 更亮的文字颜色 */
-      color:#ffffff;
+      color:#1e293b;
       line-height:1.2;
-      margin-bottom:8px;
+      margin-bottom:4px; /* 减小底部间距 */
       letter-spacing:0.8px;
-      text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+      text-shadow: 0 0 5px rgba(59, 130, 246, 0.1);
     }
     .tool-name {
-      font-size:16px;
-      /* 更亮的蓝色 */
-      color:#93c5fd;
+      font-size:14px; /* 减小字体 */
+      color:#3b82f6;
       font-weight:400;
       opacity:1;
       letter-spacing:0.5px;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    /* 分类按钮科技风样式 - 更明亮 */
+    /* 分类按钮：减小间距和内边距 */
     .category-switch {
       display:flex;
       justify-content:center;
-      margin:0 0 32px;
-      gap:16px;
+      margin:0 0 16px; /* 大幅减小底部外边距 */
+      gap:12px; /* 减小按钮间距 */
     }
     .category-btn {
-      padding:12px 24px;
-      border:1px solid rgba(59, 130, 246, 0.5);
+      padding:8px 18px; /* 减小按钮内边距 */
+      border:1px solid rgba(59, 130, 246, 0.3);
       border-radius:50px;
-      /* 更亮的按钮背景 */
-      background:rgba(30, 41, 59, 0.7);
-      /* 更亮的文字 */
-      color:#cbd5e1;
-      font-size:14px;
+      background:rgba(255, 255, 255, 0.8);
+      color:#475569;
+      font-size:13px; /* 减小字体 */
       font-weight:500;
       cursor:pointer;
       transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       position:relative;
       overflow:hidden;
     }
-    /* 按钮内发光效果 */
     .category-btn::before {
       content: '';
       position:absolute;
@@ -157,88 +147,83 @@
       left:-100%;
       width:100%;
       height:100%;
-      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.15), transparent);
       transition: left 0.6s ease;
     }
     .category-btn:hover::before {
       left: 100%;
     }
-    /* 气动选中态 - 更亮的科技蓝渐变 */
     .category-btn[data-category="pneumatic"].active {
       background:linear-gradient(135deg, #3b82f6, #60a5fa);
       color:#ffffff;
       border-color: #93c5fd;
       box-shadow: 
-        0 0 20px rgba(59, 130, 246, 0.5),
+        0 0 20px rgba(59, 130, 246, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
     }
-    /* 液压选中态 - 更亮的科技橙渐变 */
     .category-btn[data-category="hydraulic"].active {
       background:linear-gradient(135deg, #fb923c, #fdba74);
       color:#ffffff;
       border-color: #fdba74;
       box-shadow: 
-        0 0 20px rgba(249, 115, 22, 0.5),
+        0 0 20px rgba(249, 115, 22, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
     }
     .category-btn:hover:not(.active) {
-      background:rgba(30, 41, 59, 0.9);
-      color:#93c5fd;
-      border-color: rgba(59, 130, 246, 0.8);
+      background:rgba(255, 255, 255, 1);
+      color:#3b82f6;
+      border-color: rgba(59, 130, 246, 0.5);
       transform: translateY(-2px);
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
     }
-    /* 表单区域科技风样式 - 更明亮 */
+    /* 表单区域：减小底部间距 */
     .form-wrapper {
       flex:1;
-      margin-bottom:30px;
+      margin-bottom:16px; /* 大幅减小底部外边距 */
     }
+    /* 表单项：减小内边距和间距 */
     .form-item {
       display:flex;
       align-items:center;
-      margin-bottom:20px;
-      padding:18px 20px;
-      /* 更亮的表单背景 */
-      background: rgba(30, 41, 59, 0.7);
-      border-radius:18px;
+      margin-bottom:10px; /* 大幅减小表单项间距 */
+      padding:12px 14px; /* 减小表单项内边距 */
+      background: rgba(255, 255, 255, 0.8);
+      border-radius:14px; /* 轻微减小圆角 */
       transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.3);
+        0 4px 12px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(59, 130, 246, 0.2);
     }
     .form-item:hover {
       transform:translateY(-2px);
       box-shadow: 
-        0 8px 20px rgba(0, 0, 0, 0.2),
-        0 0 15px rgba(59, 130, 246, 0.2);
-      border-color: rgba(59, 130, 246, 0.5);
+        0 8px 20px rgba(0, 0, 0, 0.08),
+        0 0 15px rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.3);
     }
     .label {
-      width:90px;
-      font-size:14px;
-      /* 更亮的标签文字 */
-      color:#f1f5f9;
+      width:75px; /* 减小标签宽度 */
+      font-size:13px; /* 减小字体 */
+      color:#1e293b;
       font-weight:500;
       flex-shrink:0;
       letter-spacing:0.3px;
     }
-    /* 自定义下拉框科技风样式 - 更明亮 */
     .custom-select {
       position:relative;
       flex:1;
     }
     select {
       width:100%;
-      padding:14px 20px 14px 20px;
-      border:1px solid rgba(59, 130, 246, 0.4);
-      border-radius:14px;
-      font-size:14px;
-      color:#ffffff;
-      /* 更亮的下拉框背景 */
-      background:rgba(15, 23, 42, 0.85);
+      padding:10px 16px; /* 减小下拉框内边距 */
+      border:1px solid rgba(59, 130, 246, 0.3);
+      border-radius:12px; /* 轻微减小圆角 */
+      font-size:13px; /* 减小字体 */
+      color:#1e293b;
+      background:rgba(255, 255, 255, 0.95);
       transition:all 0.3s ease;
       appearance: none;
       -webkit-appearance: none;
@@ -247,63 +232,59 @@
     select:focus {
       outline:none;
       border-color:#60a5fa;
-      box-shadow:0 0 0 4px rgba(59, 130, 246, 0.25), 0 0 15px rgba(59, 130, 246, 0.2);
-      background:rgba(15, 23, 42, 0.95);
+      box-shadow:0 0 0 4px rgba(59, 130, 246, 0.1), 0 0 15px rgba(59, 130, 246, 0.1);
+      background:#ffffff;
     }
     select:hover {
-      border-color:rgba(59, 130, 246, 0.6);
+      border-color:rgba(59, 130, 246, 0.4);
     }
     select option {
-      /* 更亮的选项背景 */
-      background: #1e293b;
-      color: #f1f5f9;
-      padding: 10px;
-      border: none;
+      background: #ffffff;
+      color: #1e293b;
+      padding: 8px; /* 减小选项内边距 */
+      border: 1px solid rgba(59, 130, 246, 0.1);
     }
     .select-arrow {
       position: absolute;
-      right: 20px;
+      right: 16px; /* 调整箭头位置 */
       top: 50%;
       transform: translateY(-50%);
-      /* 更亮的箭头颜色 */
-      color: #93c5fd;
-      font-size: 12px;
+      color: #3b82f6;
+      font-size: 11px; /* 减小箭头大小 */
       pointer-events: none;
       transition: all 0.3s ease;
-      text-shadow: 0 0 5px rgba(59, 130, 246, 0.6);
+      text-shadow: 0 0 5px rgba(59, 130, 246, 0.2);
     }
     .custom-select:hover .select-arrow {
-      color: #bfdbfe;
+      color: #2563eb;
       transform: translateY(-50%) scale(1.1);
     }
-    /* 结果区域科技风样式 - 更明亮 */
+    /* 结果区域：减小内边距和间距 */
     .result {
       margin-top:0;
-      padding:30px 24px;
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
-      border-radius:24px;
+      padding:18px 16px; /* 大幅减小结果区域内边距 */
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+      border-radius:18px; /* 轻微减小圆角 */
       text-align:center;
-      border: 1px solid rgba(59, 130, 246, 0.4);
+      border: 1px solid rgba(59, 130, 246, 0.2);
       box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.2),
-        0 0 20px rgba(59, 130, 246, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 0 20px rgba(59, 130, 246, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
       position:relative;
       overflow:hidden;
-      margin-bottom:24px;
+      margin-bottom:12px; /* 减小底部间距 */
     }
-    /* 结果区域顶部光条 - 更亮 */
     .result::before {
       content: '';
       position:absolute;
       top:0;
       left:0;
       width:100%;
-      height:4px;
+      height:3px; /* 减小顶部光条高度 */
       background: linear-gradient(90deg, #60a5fa, #22d3ee, #60a5fa);
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.9);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
     }
-    /* 结果区域装饰光效 - 更亮 */
     .result::after {
       content: '';
       position:absolute;
@@ -311,71 +292,74 @@
       left: 50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
     .result-label {
-      font-size:18px;
-      /* 更亮的标签颜色 */
-      color:#bfdbfe;
+      font-size:15px; /* 减小字体 */
+      color:#3b82f6;
       font-weight:500;
       letter-spacing:0.5px;
       opacity:1;
       display: block;
-      margin-bottom: 8px;
+      margin-bottom: 4px; /* 减小底部间距 */
+    }
+    .final-model {
+      font-size:18px; /* 减小字体 */
+      font-weight:600;
+      color: #0891b2;
+      margin: 8px 0; /* 大幅减小上下间距 */
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(8, 145, 178, 0.2);
     }
     .price {
-      font-size:38px;
+      font-size:28px; /* 减小价格字体 */
       font-weight:700;
-      /* 更亮的价格颜色 */
-      color: #fca5a5;
-      margin:10px 0 16px;
+      color: #dc2626;
+      margin:6px 0 8px; /* 大幅减小上下间距 */
       letter-spacing:1px;
       display:inline-block;
       position:relative;
-      text-shadow: 0 0 15px rgba(248, 113, 113, 0.4);
+      text-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
     }
     .price::after {
       content: '';
       position:absolute;
-      bottom:-8px;
+      bottom:-6px; /* 调整下划线位置 */
       left:50%;
       transform:translateX(-50%) scaleX(0);
       width:80%;
       height:2px;
-      background: linear-gradient(90deg, rgba(248, 113, 113, 0.3), rgba(239, 68, 68, 0.5));
+      background: linear-gradient(90deg, rgba(220, 38, 38, 0.2), rgba(220, 38, 38, 0.4));
       border-radius:1px;
       transition: transform 0.3s ease;
-      box-shadow: 0 0 8px rgba(248, 113, 113, 0.3);
+      box-shadow: 0 0 8px rgba(220, 38, 38, 0.2);
     }
     .price:hover::after {
       transform:translateX(-50%) scaleX(1);
     }
     .note {
-      font-size:12px;
-      /* 更亮的备注文字 */
-      color:#cbd5e1;
+      font-size:11px; /* 减小备注字体 */
+      color:#475569;
       display:block;
-      margin-top:12px;
-      line-height:1.6;
+      margin-top:6px; /* 减小顶部间距 */
+      line-height:1.4; /* 减小行高 */
       letter-spacing:0.2px;
       opacity:0.9;
     }
     .inner-tip {
       text-align:center;
-      font-size:12px;
-      /* 更亮的提示文字 */
-      color:#94a3b8;
+      font-size:11px; /* 减小提示字体 */
+      color:#64748b;
       font-weight:400;
       margin-top:0;
-      padding-top:20px;
-      border-top:1px dashed rgba(59, 130, 246, 0.3);
+      padding-top:10px; /* 减小顶部内边距 */
+      border-top:1px dashed rgba(59, 130, 246, 0.2);
       letter-spacing:0.3px;
     }
     .hidden {display:none!important;}
 
-    /* 价格数字滚动动画 */
     @keyframes countUp {
       from { opacity: 0.3; transform: translateY(5px); }
       to { opacity: 1; transform: translateY(0); }
@@ -384,48 +368,58 @@
       animation: countUp 0.6s ease-out;
     }
     
-    /* 加载中动画 - 更亮的颜色 */
+    @keyframes modelFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .model-update {
+      animation: modelFadeIn 0.4s ease-out;
+    }
+    
     @keyframes pulse {
       0% { opacity: 0.6; }
       50% { opacity: 1; }
       100% { opacity: 0.6; }
     }
-    .price.loading {
+    .price.loading, .final-model.loading {
       animation: pulse 1s infinite;
-      color: #93c5fd;
+      color: #3b82f6;
     }
 
-    /* 移动端科技风适配 */
+    /* 移动端适配：进一步优化紧凑度 */
     @media (max-width: 375px) {
       .container {
-        padding:24px 20px;
-        min-height:calc(100vh - 20px);
-        border-radius: 20px;
+        padding:12px 14px; /* 进一步减小容器内边距 */
+        min-height:calc(100vh - 16px);
+        border-radius: 16px;
       }
       .form-item {
-        padding:16px 18px;
-        margin-bottom:18px;
+        padding:10px 12px; /* 进一步减小表单项内边距 */
+        margin-bottom:8px; /* 进一步减小表单项间距 */
       }
       .label {
-        width:80px;
-        font-size:13px;
+        width:70px; /* 进一步减小标签宽度 */
+        font-size:12px; /* 进一步减小标签字体 */
       }
       select {
-        padding:12px 18px;
-        font-size:13px;
+        padding:8px 14px; /* 进一步减小下拉框内边距 */
+        font-size:12px; /* 进一步减小下拉框字体 */
       }
       .price {
-        font-size:32px;
+        font-size:24px; /* 进一步减小价格字体 */
+      }
+      .final-model {
+        font-size:16px; /* 进一步减小型号字体 */
       }
       .category-btn {
-        padding:10px 20px;
-        font-size:13px;
+        padding:6px 14px; /* 进一步减小按钮内边距 */
+        font-size:12px; /* 进一步减小按钮字体 */
       }
       .company-name {
-        font-size:22px;
+        font-size:18px; /* 进一步减小公司名称字体 */
       }
       .tool-name {
-        font-size:14px;
+        font-size:12px; /* 进一步减小工具名称字体 */
       }
     }
   </style>
@@ -492,6 +486,8 @@
       </div>
     </div>
     <div class="result">
+      <span class="result-label">最终型号：</span>
+      <span class="final-model" id="finalModel">KZ-45DA</span>
       <span class="result-label">最终总价：</span>
       <span class="price" id="totalPrice">¥589 元</span>
       <span class="note">含13%增值税；316L=SS316×1.05取整；单作用弹簧按型号定价</span>
@@ -500,7 +496,6 @@
   </div>
 
   <script>
-    // 全量精准数据
     const productData = {
       pneumatic: {
         bodyPrice: {
@@ -532,7 +527,6 @@
       }
     };
 
-    // 获取DOM元素
     const categoryBtns = document.querySelectorAll('.category-btn');
     const modelSelect = document.getElementById('modelSelect');
     const materialSelect = document.getElementById('materialSelect');
@@ -542,11 +536,10 @@
     const springCountSelect = document.getElementById('springCountSelect');
     const discountSelect = document.getElementById('discountSelect');
     const totalPriceEl = document.getElementById('totalPrice');
+    const finalModelEl = document.getElementById('finalModel');
 
-    // 当前选中的分类
     let currentCategory = 'pneumatic';
 
-    // 初始化弹簧数量下拉框
     function initSpringCountSelect(model) {
       springCountSelect.innerHTML = '';
       const maxCount = productData.pneumatic.springMaxCount[model] || 12;
@@ -559,7 +552,6 @@
       }
     }
 
-    // 初始化型号下拉框
     function initModelSelect(category) {
       modelSelect.innerHTML = '';
       const models = Object.keys(productData[category].bodyPrice.ss304);
@@ -587,24 +579,55 @@
       }
     }
 
-    // 价格更新动画函数（科技风数字滚动）
+    modelSelect.addEventListener('change', function() {
+      if (currentCategory === 'pneumatic' && typeSelect.value === 'single') {
+        initSpringCountSelect(this.value);
+      }
+    });
+
+    function generateFinalModel() {
+      const baseModel = modelSelect.value;
+      const type = currentCategory === 'pneumatic' ? typeSelect.value : 'double';
+      const springCount = parseInt(springCountSelect.value) || 1;
+      
+      let finalModel = baseModel;
+      
+      if (currentCategory === 'pneumatic') {
+        if (type === 'double') {
+          finalModel += 'DA';
+        } else {
+          finalModel += `K${springCount}`;
+        }
+      } else {
+        finalModel += 'DA';
+      }
+      
+      return finalModel;
+    }
+
+    function updateFinalModelWithAnimation() {
+      finalModelEl.classList.remove('model-update');
+      void finalModelEl.offsetWidth;
+      finalModelEl.classList.add('model-update');
+      finalModelEl.textContent = generateFinalModel();
+    }
+
     function updatePriceWithAnimation(finalPrice) {
-      // 移除加载类，添加动画类
       totalPriceEl.classList.remove('loading');
+      finalModelEl.classList.remove('loading');
       totalPriceEl.classList.add('price-update');
-      // 更新价格
       totalPriceEl.textContent = `¥${finalPrice} 元`;
-      // 移除动画类
+      updateFinalModelWithAnimation();
       setTimeout(() => {
         totalPriceEl.classList.remove('price-update');
       }, 600);
     }
 
-    // 计算价格
     function calculatePrice() {
-      // 计算中状态（科技风加载动效）
       totalPriceEl.textContent = '计算中...';
+      finalModelEl.textContent = '生成中...';
       totalPriceEl.classList.add('loading');
+      finalModelEl.classList.add('loading');
       
       setTimeout(() => {
         const material = materialSelect.value;
@@ -631,7 +654,6 @@
       }, 150);
     }
 
-    // 防抖函数（优化性能）
     function debounce(fn, delay = 150) {
       let timer = null;
       return function(...args) {
@@ -642,7 +664,6 @@
       };
     }
 
-    // 分类切换事件
     categoryBtns.forEach(btn => {
       btn.addEventListener('click', function() {
         categoryBtns.forEach(b => b.classList.remove('active'));
@@ -653,7 +674,6 @@
       });
     });
 
-    // 类型选择事件
     typeSelect.addEventListener('change', function() {
       if (currentCategory === 'pneumatic') {
         if (this.value === 'single') {
@@ -666,13 +686,11 @@
       }
     });
 
-    // 绑定防抖事件
     modelSelect.addEventListener('change', debounce(calculatePrice));
     materialSelect.addEventListener('change', debounce(calculatePrice));
     springCountSelect.addEventListener('change', debounce(calculatePrice));
     discountSelect.addEventListener('change', debounce(calculatePrice));
 
-    // 页面初始化
     window.addEventListener('load', function() {
       initModelSelect(currentCategory);
       calculatePrice();
