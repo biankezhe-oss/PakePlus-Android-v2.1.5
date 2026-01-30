@@ -4,111 +4,437 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>无锡科振自控阀门有限公司 执行器价格计算小工具</title>
+  <title>无锡科振自控阀门有限公司 执行器报价助手</title>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei", sans-serif;}
+    * {margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei", "PingFang SC", "SF Pro Display", sans-serif;}
     body {
       min-height:100vh;
       margin:0;
-      padding:0;
-      background: linear-gradient(-45deg, #f0f4f8, #e8f0fe, #f5fafe, #eef5ff) !important;
-      background-size: 400% 400% !important;
-      animation: gradientBg 15s ease infinite !important;
+      padding:20px 10px;
+      /* 调整背景为更明亮的科技蓝渐变 */
+      background: radial-gradient(circle at 10% 20%, #1e293b 0%, #0f172a 100%);
+      background-attachment: fixed;
       overflow-x: hidden;
+      position: relative;
     }
-    @keyframes gradientBg {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+    /* 科技感粒子背景 - 提高亮度 */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 25% 15%, rgba(59, 130, 246, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 75% 85%, rgba(14, 165, 233, 0.15) 0%, transparent 25%),
+        linear-gradient(to bottom, transparent, rgba(30, 41, 59, 0.8));
+      pointer-events: none;
+      z-index: -1;
     }
+    /* 网格背景 - 提高对比度 */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -1;
+    }
+    /* 科技风容器 - 更明亮的玻璃拟态 */
     .container {
       width:100%;
-      max-width:500px;
-      min-height:100vh;
-      background:white;
-      padding:20px 25px;
+      max-width:520px;
+      min-height:calc(100vh - 40px);
+      /* 提高背景透明度，更明亮 */
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding:30px 24px;
       margin:0 auto;
       display:flex;
       flex-direction:column;
-      box-shadow:0 0 20px rgba(0,0,0,0.05);
-      border-radius:0 0 12px 12px;
+      border-radius:24px;
+      box-shadow: 
+        0 0 30px rgba(59, 130, 246, 0.15),
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      position: relative;
+      overflow: hidden;
     }
-    .header {text-align:center;margin:20px 0 30px;}
-    .company-name {font-size:22px;font-weight:bold;color:#2d3748;line-height:1.3;margin-bottom:8px;}
-    .tool-name {font-size:18px;color:#2f80ed;font-weight:500;}
-    .category-switch {display:flex;justify-content:center;margin:15px 0 25px;gap:10px;padding-bottom:15px;border-bottom:1px solid #f1f5f9;}
+    /* 容器发光边框效果 - 更亮的渐变 */
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: linear-gradient(135deg, #60a5fa, #22d3ee, #60a5fa);
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.9;
+      z-index: -1;
+    }
+    /* 头部科技感排版 */
+    .header {
+      text-align:center;
+      margin:0 0 32px;
+      padding-bottom:24px;
+      border-bottom:1px solid rgba(59, 130, 246, 0.3);
+      position:relative;
+    }
+    .header::after {
+      content: '';
+      position:absolute;
+      bottom:-1px;
+      left:50%;
+      transform:translateX(-50%);
+      width:80px;
+      height:2px;
+      background: linear-gradient(90deg, #60a5fa, #22d3ee);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.9);
+    }
+    .company-name {
+      font-size:24px;
+      font-weight:600;
+      /* 更亮的文字颜色 */
+      color:#ffffff;
+      line-height:1.2;
+      margin-bottom:8px;
+      letter-spacing:0.8px;
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+    .tool-name {
+      font-size:16px;
+      /* 更亮的蓝色 */
+      color:#93c5fd;
+      font-weight:400;
+      opacity:1;
+      letter-spacing:0.5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    /* 分类按钮科技风样式 - 更明亮 */
+    .category-switch {
+      display:flex;
+      justify-content:center;
+      margin:0 0 32px;
+      gap:16px;
+    }
     .category-btn {
-      padding:8px 16px;
-      border:1px solid #e2e8f0;
-      border-radius:20px;
-      background:#f8fafc;
-      color:#4a5568;
+      padding:12px 24px;
+      border:1px solid rgba(59, 130, 246, 0.5);
+      border-radius:50px;
+      /* 更亮的按钮背景 */
+      background:rgba(30, 41, 59, 0.7);
+      /* 更亮的文字 */
+      color:#cbd5e1;
       font-size:14px;
+      font-weight:500;
       cursor:pointer;
-      transition:all 0.3s ease;
+      transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position:relative;
+      overflow:hidden;
     }
-    .category-btn.active {
-      background:linear-gradient(90deg, #2f80ed, #56ccf2);
-      color:white;
-      border-color:transparent;
-      box-shadow:0 3px 8px rgba(47,128,237,0.2);
+    /* 按钮内发光效果 */
+    .category-btn::before {
+      content: '';
+      position:absolute;
+      top:0;
+      left:-100%;
+      width:100%;
+      height:100%;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+      transition: left 0.6s ease;
     }
-    .category-btn:hover:not(.active) {border-color:#2f80ed;color:#2f80ed;}
-    .form-wrapper {flex:1;}
+    .category-btn:hover::before {
+      left: 100%;
+    }
+    /* 气动选中态 - 更亮的科技蓝渐变 */
+    .category-btn[data-category="pneumatic"].active {
+      background:linear-gradient(135deg, #3b82f6, #60a5fa);
+      color:#ffffff;
+      border-color: #93c5fd;
+      box-shadow: 
+        0 0 20px rgba(59, 130, 246, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    /* 液压选中态 - 更亮的科技橙渐变 */
+    .category-btn[data-category="hydraulic"].active {
+      background:linear-gradient(135deg, #fb923c, #fdba74);
+      color:#ffffff;
+      border-color: #fdba74;
+      box-shadow: 
+        0 0 20px rgba(249, 115, 22, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    .category-btn:hover:not(.active) {
+      background:rgba(30, 41, 59, 0.9);
+      color:#93c5fd;
+      border-color: rgba(59, 130, 246, 0.8);
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+    }
+    /* 表单区域科技风样式 - 更明亮 */
+    .form-wrapper {
+      flex:1;
+      margin-bottom:30px;
+    }
     .form-item {
       display:flex;
       align-items:center;
       margin-bottom:20px;
-      padding:16px;
-      background:linear-gradient(135deg, #f8fafc, #f1f5f9);
-      border-radius:12px;
-      transition:all 0.3s ease;
+      padding:18px 20px;
+      /* 更亮的表单背景 */
+      background: rgba(30, 41, 59, 0.7);
+      border-radius:18px;
+      transition:all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
     }
-    .form-item:hover {transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.06);}
-    .label {width:90px;font-size:15px;color:#4a5568;font-weight:500;flex-shrink:0;}
-    select {
+    .form-item:hover {
+      transform:translateY(-2px);
+      box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.2),
+        0 0 15px rgba(59, 130, 246, 0.2);
+      border-color: rgba(59, 130, 246, 0.5);
+    }
+    .label {
+      width:90px;
+      font-size:14px;
+      /* 更亮的标签文字 */
+      color:#f1f5f9;
+      font-weight:500;
+      flex-shrink:0;
+      letter-spacing:0.3px;
+    }
+    /* 自定义下拉框科技风样式 - 更明亮 */
+    .custom-select {
+      position:relative;
       flex:1;
-      padding:12px 14px;
-      border:1px solid #e2e8f0;
-      border-radius:8px;
-      font-size:15px;color:#2d3748;
-      background:white;
+    }
+    select {
+      width:100%;
+      padding:14px 20px 14px 20px;
+      border:1px solid rgba(59, 130, 246, 0.4);
+      border-radius:14px;
+      font-size:14px;
+      color:#ffffff;
+      /* 更亮的下拉框背景 */
+      background:rgba(15, 23, 42, 0.85);
       transition:all 0.3s ease;
+      appearance: none;
+      -webkit-appearance: none;
+      letter-spacing:0.3px;
     }
     select:focus {
       outline:none;
-      border-color:#2f80ed;
-      box-shadow:0 0 0 3px rgba(47,128,237,0.1);
+      border-color:#60a5fa;
+      box-shadow:0 0 0 4px rgba(59, 130, 246, 0.25), 0 0 15px rgba(59, 130, 246, 0.2);
+      background:rgba(15, 23, 42, 0.95);
     }
+    select:hover {
+      border-color:rgba(59, 130, 246, 0.6);
+    }
+    select option {
+      /* 更亮的选项背景 */
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 10px;
+      border: none;
+    }
+    .select-arrow {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      /* 更亮的箭头颜色 */
+      color: #93c5fd;
+      font-size: 12px;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 5px rgba(59, 130, 246, 0.6);
+    }
+    .custom-select:hover .select-arrow {
+      color: #bfdbfe;
+      transform: translateY(-50%) scale(1.1);
+    }
+    /* 结果区域科技风样式 - 更明亮 */
     .result {
-      margin-top:25px;
-      padding:22px;
-      background:linear-gradient(135deg, #e6f7ff, #f0f9ff);
-      border-radius:16px;
+      margin-top:0;
+      padding:30px 24px;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+      border-radius:24px;
       text-align:center;
-      border:1px solid #bae7ff;
-      box-shadow:0 3px 10px rgba(186,231,255,0.5);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(59, 130, 246, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position:relative;
+      overflow:hidden;
+      margin-bottom:24px;
     }
-    .result-label {font-size:17px;color:#4a5568;font-weight:500;}
+    /* 结果区域顶部光条 - 更亮 */
+    .result::before {
+      content: '';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:4px;
+      background: linear-gradient(90deg, #60a5fa, #22d3ee, #60a5fa);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.9);
+    }
+    /* 结果区域装饰光效 - 更亮 */
+    .result::after {
+      content: '';
+      position:absolute;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .result-label {
+      font-size:18px;
+      /* 更亮的标签颜色 */
+      color:#bfdbfe;
+      font-weight:500;
+      letter-spacing:0.5px;
+      opacity:1;
+      display: block;
+      margin-bottom: 8px;
+    }
     .price {
-      font-size:30px;
-      font-weight:bold;
-      background:linear-gradient(90deg, #2f80ed, #56ccf2);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      margin:0 8px;
+      font-size:38px;
+      font-weight:700;
+      /* 更亮的价格颜色 */
+      color: #fca5a5;
+      margin:10px 0 16px;
+      letter-spacing:1px;
+      display:inline-block;
+      position:relative;
+      text-shadow: 0 0 15px rgba(248, 113, 113, 0.4);
     }
-    .original-price {font-size:12px;color:#718096;margin-top:8px;display:block;}
-    .note {font-size:12px;color:#718096;display:block;margin-top:5px;}
-    .inner-tip {text-align:center;font-size:11px;color:#ff4d4f;font-weight:500;margin-top:30px;padding-top:15px;border-top:1px dashed #eee;}
+    .price::after {
+      content: '';
+      position:absolute;
+      bottom:-8px;
+      left:50%;
+      transform:translateX(-50%) scaleX(0);
+      width:80%;
+      height:2px;
+      background: linear-gradient(90deg, rgba(248, 113, 113, 0.3), rgba(239, 68, 68, 0.5));
+      border-radius:1px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 8px rgba(248, 113, 113, 0.3);
+    }
+    .price:hover::after {
+      transform:translateX(-50%) scaleX(1);
+    }
+    .note {
+      font-size:12px;
+      /* 更亮的备注文字 */
+      color:#cbd5e1;
+      display:block;
+      margin-top:12px;
+      line-height:1.6;
+      letter-spacing:0.2px;
+      opacity:0.9;
+    }
+    .inner-tip {
+      text-align:center;
+      font-size:12px;
+      /* 更亮的提示文字 */
+      color:#94a3b8;
+      font-weight:400;
+      margin-top:0;
+      padding-top:20px;
+      border-top:1px dashed rgba(59, 130, 246, 0.3);
+      letter-spacing:0.3px;
+    }
     .hidden {display:none!important;}
+
+    /* 价格数字滚动动画 */
+    @keyframes countUp {
+      from { opacity: 0.3; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .price-update {
+      animation: countUp 0.6s ease-out;
+    }
+    
+    /* 加载中动画 - 更亮的颜色 */
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+    .price.loading {
+      animation: pulse 1s infinite;
+      color: #93c5fd;
+    }
+
+    /* 移动端科技风适配 */
+    @media (max-width: 375px) {
+      .container {
+        padding:24px 20px;
+        min-height:calc(100vh - 20px);
+        border-radius: 20px;
+      }
+      .form-item {
+        padding:16px 18px;
+        margin-bottom:18px;
+      }
+      .label {
+        width:80px;
+        font-size:13px;
+      }
+      select {
+        padding:12px 18px;
+        font-size:13px;
+      }
+      .price {
+        font-size:32px;
+      }
+      .category-btn {
+        padding:10px 20px;
+        font-size:13px;
+      }
+      .company-name {
+        font-size:22px;
+      }
+      .tool-name {
+        font-size:14px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
       <div class="company-name">无锡科振自控阀门有限公司</div>
-      <div class="tool-name">执行器价格计算小工具</div>
+      <div class="tool-name">执行器报价助手</div>
     </div>
     <div class="category-switch">
       <button class="category-btn active" data-category="pneumatic">气动执行器</button>
@@ -116,50 +442,61 @@
     </div>
     <div class="form-wrapper">
       <div class="form-item">
-        <label class="label">材质：</label>
-        <select id="materialSelect">
-          <option value="ss304">SS304</option>
-          <option value="ss316">SS316</option>
-          <option value="ss316l">316L</option>
-        </select>
+        <label class="label">型号：</label>
+        <div class="custom-select">
+          <select id="modelSelect"></select>
+          <div class="select-arrow">▼</div>
+        </div>
       </div>
       <div class="form-item">
-        <label class="label">型号：</label>
-        <select id="modelSelect"></select>
+        <label class="label">材质：</label>
+        <div class="custom-select">
+          <select id="materialSelect">
+            <option value="ss304">SS304</option>
+            <option value="ss316">SS316</option>
+            <option value="ss316l">316L</option>
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
       </div>
       <div class="form-item" id="typeGroup">
         <label class="label">类型：</label>
-        <select id="typeSelect">
-          <option value="double">双作用</option>
-          <option value="single">单作用（含弹簧）</option>
-        </select>
+        <div class="custom-select">
+          <select id="typeSelect">
+            <option value="double">双作用</option>
+            <option value="single">单作用（含弹簧）</option>
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
       </div>
       <div class="form-item hidden" id="springCountGroup">
         <label class="label">弹簧数量：</label>
-        <select id="springCountSelect">
-          <option value="6">6</option><option value="7">7</option><option value="8">8</option>
-          <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
-        </select>
+        <div class="custom-select">
+          <select id="springCountSelect"></select>
+          <div class="select-arrow">▼</div>
+        </div>
       </div>
       <div class="form-item">
         <label class="label">折扣：</label>
-        <select id="discountSelect">
-          <option value="1.00" selected>原价（不打折）</option>
-          <option value="0.99">九九折</option><option value="0.98">九八折</option><option value="0.97">九七折</option>
-          <option value="0.96">九六折</option><option value="0.95">九五折</option><option value="0.94">九四折</option>
-          <option value="0.93">九三折</option><option value="0.92">九二折</option><option value="0.91">九一折</option>
-          <option value="0.90">九折</option><option value="0.89">八九折</option><option value="0.88">八八折</option>
-          <option value="0.87">八七折</option><option value="0.86">八六折</option><option value="0.85">八五折</option>
-        </select>
+        <div class="custom-select">
+          <select id="discountSelect">
+            <option value="1.00" selected>原价（不打折）</option>
+            <option value="0.99">99折</option><option value="0.98">98折</option><option value="0.97">97折</option>
+            <option value="0.96">96折</option><option value="0.95">95折</option><option value="0.94">94折</option>
+            <option value="0.93">93折</option><option value="0.92">92折</option><option value="0.91">91折</option>
+            <option value="0.90">90折</option><option value="0.89">89折</option><option value="0.88">88折</option>
+            <option value="0.87">87折</option><option value="0.86">86折</option><option value="0.85">85折</option>
+          </select>
+          <div class="select-arrow">▼</div>
+        </div>
       </div>
     </div>
     <div class="result">
       <span class="result-label">最终总价：</span>
       <span class="price" id="totalPrice">¥589 元</span>
-      <span class="original-price" id="originalPrice">基础价：¥589 元</span>
       <span class="note">含13%增值税；316L=SS316×1.05取整；单作用弹簧按型号定价</span>
     </div>
-    <div class="inner-tip">仅供无锡科振自控阀门有限公司内部人员使用</div>
+    <div class="inner-tip">仅供无锡科振自控阀门有限公司内部使用</div>
   </div>
 
   <script>
@@ -173,4 +510,173 @@
         springUnitPrice: {
           "KZ-45":2.5,"KZ-52":3,"KZ-63":4,"KZ-75":5.5,"KZ-83":6,"KZ-92":8,"KZ-105":11,
           "KZ-125":15,"KZ-140":23,"KZ-160":38,"KZ-190":55,"KZ-210":65,"KZ-240":80,
-          
+          "KZ-270":95,"KZ-300":110,"KZ-350":135,"KZ-400":160
+        },
+        springMaxCount: {
+          "KZ-45":4,"KZ-52":12,"KZ-63":12,"KZ-75":12,"KZ-83":12,"KZ-92":12,"KZ-105":12,
+          "KZ-125":12,"KZ-140":12,"KZ-160":12,"KZ-190":12,"KZ-210":12,"KZ-240":12,
+          "KZ-270":12,"KZ-300":12,"KZ-350":12,"KZ-400":16
+        }
+      },
+      hydraulic: {
+        bodyPrice: {
+          ss304: {
+            "HD120": 2970,"HD350": 3260,"HD700": 4080,"HD1400": 5480,"HD3000": 6990,"HD5000": 7770,"HD10K": 14660
+          },
+          ss316: {
+            "HD120": 3080,"HD350": 3430,"HD700": 4330,"HD1400": 5940,"HD3000": 7640,"HD5000": 9020,"HD10K": 16040
+          }
+        },
+        springUnitPrice: {},
+        springMaxCount: {}
+      }
+    };
+
+    // 获取DOM元素
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const modelSelect = document.getElementById('modelSelect');
+    const materialSelect = document.getElementById('materialSelect');
+    const typeSelect = document.getElementById('typeSelect');
+    const typeGroup = document.getElementById('typeGroup');
+    const springCountGroup = document.getElementById('springCountGroup');
+    const springCountSelect = document.getElementById('springCountSelect');
+    const discountSelect = document.getElementById('discountSelect');
+    const totalPriceEl = document.getElementById('totalPrice');
+
+    // 当前选中的分类
+    let currentCategory = 'pneumatic';
+
+    // 初始化弹簧数量下拉框
+    function initSpringCountSelect(model) {
+      springCountSelect.innerHTML = '';
+      const maxCount = productData.pneumatic.springMaxCount[model] || 12;
+      for (let i = 1; i <= maxCount; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        if (i === 1) option.selected = true;
+        springCountSelect.appendChild(option);
+      }
+    }
+
+    // 初始化型号下拉框
+    function initModelSelect(category) {
+      modelSelect.innerHTML = '';
+      const models = Object.keys(productData[category].bodyPrice.ss304);
+      models.forEach(model => {
+        const option = document.createElement('option');
+        option.value = model;
+        option.textContent = model;
+        if (model === (category === 'pneumatic' ? 'KZ-45' : 'HD120')) {
+          option.selected = true;
+        }
+        modelSelect.appendChild(option);
+      });
+
+      if (category === 'hydraulic') {
+        typeGroup.classList.add('hidden');
+        springCountGroup.classList.add('hidden');
+      } else {
+        typeGroup.classList.remove('hidden');
+        if (typeSelect.value === 'double') {
+          springCountGroup.classList.add('hidden');
+        } else {
+          initSpringCountSelect(modelSelect.value);
+          springCountGroup.classList.remove('hidden');
+        }
+      }
+    }
+
+    // 价格更新动画函数（科技风数字滚动）
+    function updatePriceWithAnimation(finalPrice) {
+      // 移除加载类，添加动画类
+      totalPriceEl.classList.remove('loading');
+      totalPriceEl.classList.add('price-update');
+      // 更新价格
+      totalPriceEl.textContent = `¥${finalPrice} 元`;
+      // 移除动画类
+      setTimeout(() => {
+        totalPriceEl.classList.remove('price-update');
+      }, 600);
+    }
+
+    // 计算价格
+    function calculatePrice() {
+      // 计算中状态（科技风加载动效）
+      totalPriceEl.textContent = '计算中...';
+      totalPriceEl.classList.add('loading');
+      
+      setTimeout(() => {
+        const material = materialSelect.value;
+        const model = modelSelect.value;
+        const type = currentCategory === 'pneumatic' ? typeSelect.value : 'double';
+        const springCount = parseInt(springCountSelect.value) || 1;
+        const discount = parseFloat(discountSelect.value);
+
+        let basePrice;
+        if (material === 'ss316l') {
+          basePrice = Math.round(productData[currentCategory].bodyPrice.ss316[model] * 1.05);
+        } else {
+          basePrice = productData[currentCategory].bodyPrice[material][model];
+        }
+
+        let totalBasePrice = basePrice;
+        if (currentCategory === 'pneumatic' && type === 'single') {
+          const springUnitPrice = productData[currentCategory].springUnitPrice[model];
+          totalBasePrice += Math.round(springCount * springUnitPrice);
+        }
+
+        const finalPrice = Math.round(totalBasePrice * discount);
+        updatePriceWithAnimation(finalPrice);
+      }, 150);
+    }
+
+    // 防抖函数（优化性能）
+    function debounce(fn, delay = 150) {
+      let timer = null;
+      return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn.apply(this, args);
+        }, delay);
+      };
+    }
+
+    // 分类切换事件
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentCategory = this.dataset.category;
+        initModelSelect(currentCategory);
+        calculatePrice();
+      });
+    });
+
+    // 类型选择事件
+    typeSelect.addEventListener('change', function() {
+      if (currentCategory === 'pneumatic') {
+        if (this.value === 'single') {
+          initSpringCountSelect(modelSelect.value);
+          springCountGroup.classList.remove('hidden');
+        } else {
+          springCountGroup.classList.add('hidden');
+        }
+        calculatePrice();
+      }
+    });
+
+    // 绑定防抖事件
+    modelSelect.addEventListener('change', debounce(calculatePrice));
+    materialSelect.addEventListener('change', debounce(calculatePrice));
+    springCountSelect.addEventListener('change', debounce(calculatePrice));
+    discountSelect.addEventListener('change', debounce(calculatePrice));
+
+    // 页面初始化
+    window.addEventListener('load', function() {
+      initModelSelect(currentCategory);
+      calculatePrice();
+    });
+  </script>
+</body>
+</html>
