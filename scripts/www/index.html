@@ -1,11 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus</title>
-    </head>
-    <body>
-        PakePlus
-    </body>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科振自控阀门-执行器选型首页</title>
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;}
+        body {
+            min-height:100vh;
+            background:linear-gradient(135deg,#f5f7fa,#e4e8f0);
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            font-family:Arial, sans-serif;
+            padding:20px;
+        }
+        .title {
+            font-size:24px;
+            color:#1e40af;
+            font-weight:700;
+            margin-bottom:40px;
+            text-align:center;
+        }
+        .btn-group {
+            display:flex;
+            gap:20px;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+        .select-btn {
+            width:200px;
+            height:80px;
+            background:linear-gradient(90deg,#1e40af,#3b82f6);
+            color:white;
+            border:none;
+            border-radius:12px;
+            font-size:18px;
+            font-weight:600;
+            cursor:pointer;
+            transition:all 0.3s;
+            box-shadow:0 4px 12px rgba(30,64,175,0.3);
+        }
+        .select-btn:hover {
+            transform:translateY(-3px);
+            box-shadow:0 6px 16px rgba(30,64,175,0.4);
+        }
+        .select-btn:active {
+            transform:translateY(0);
+        }
+        .footer {
+            margin-top:50px;
+            color:#666;
+            font-size:12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">无锡市科振自控阀门执行器选型</div>
+    <div class="btn-group">
+        <!-- 直接跳转双作用.html，文件名和你一致 -->
+        <button class="select-btn" onclick="window.open('双作用.html','_self')">双作用执行器选型</button>
+        <!-- 直接跳转单作用.html，文件名和你一致 -->
+        <button class="select-btn" onclick="window.open('单作用.html','_self')">单作用执行器选型</button>
+    </div>
+    <div class="footer">选型工具 | 成本优先 精准匹配</div>
+</body>
 </html>
